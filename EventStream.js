@@ -1,7 +1,6 @@
 const debug = require('debug')(process.env.NODE_NAME);
 const Channel = require('./Channel');
 const EventEmitter = require("./EventEmitter");
-const {cencrypt} = require("../helpers/crypto/generator");
 
 
 /**
@@ -55,7 +54,7 @@ const open = (name, request, response) => {
 const emit = (response, data) => {
   let result = JSON.stringify(data) || Object.create(null);
 
-  response.write('event: message\n' + `data: ${cencrypt(result)}` + '\n\n');
+  response.write('event: message\n' + `data: ${result}` + '\n\n');
 
   //TODO: result is received data
   debug('\u001b[36m EventStream emit: message',
