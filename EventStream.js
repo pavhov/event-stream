@@ -32,12 +32,12 @@ const open = (name, request, response) => {
 
   request.client.once('close', () => {
     debug('close:', eventKey,
-    console.colors.Reset);
+      console.colors.Reset);
 
-  Channel.unsubscribe(eventKey);
-  EventEmitter.removeListener('rp:' + eventKey, emitBounded);
+    Channel.unsubscribe(eventKey);
+    EventEmitter.removeListener('rp:' + eventKey, emitBounded);
 
-});
+  });
 
   debug('\u001b[36m EventStream Channel: Created', eventKey,
     console.colors.Reset);
